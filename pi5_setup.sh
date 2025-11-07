@@ -54,6 +54,10 @@ STAGE_NAMES[9]="N8N Workflow Import"
 STAGE_NAMES[10]="Git Repo Clone (Host)"
 STAGE_NAMES[11]="RPI-Clone Setup & Final Summary"
 
+# Configuration variables
+# Current timezone (surely)
+TIMEZONE="${TIMEZONE:-Asia/Bangladesh}"
+
 # Check if running as root
 if [ "$EUID" -eq 0 ]; then 
     error "Please do not run this script as root. Run as regular user with sudo privileges."
@@ -313,6 +317,8 @@ case $TARGET_STAGE in
             --name n8n \
             --restart unless-stopped \
             -p 5678:5678 \
+            -e GENERIC_TIMEZONE="$TIMEZONE" \
+            -e TZ="$TIMEZONE" \
             -e N8N_HIDE_USAGE_PAGE="false" \
             -e N8N_ONBOARDING_FLOW_DISABLED="true" \
             -e N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true \
