@@ -328,6 +328,7 @@ case $TARGET_STAGE in
             -e N8N_RUNNERS_ENABLED=true \
             -e NODES_EXCLUDE="[]" \
             -e N8N_GIT_NODE_DISABLE_BARE_REPOS="false" \
+            -e N8N_RESTRICT_FILE_ACCESS_TO="/home/node/git/dunkbin-stats-images/" \
             -v n8n_data:/home/node/.n8n \
             docker.n8n.io/n8nio/n8n
             
