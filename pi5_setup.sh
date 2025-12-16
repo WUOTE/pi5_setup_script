@@ -326,9 +326,11 @@ case $TARGET_STAGE in
             -e N8N_DEFAULT_LOCALE="en" \
             -e N8N_SECURE_COOKIE="false" \
             -e N8N_RUNNERS_ENABLED=true \
+            -e NODES_EXCLUDE="[]" \
+            -e N8N_GIT_NODE_DISABLE_BARE_REPOS="false" \
             -v n8n_data:/home/node/.n8n \
             docker.n8n.io/n8nio/n8n
-        
+            
         log "Waiting for N8N to start..."
         # Robust wait loop instead of 'sleep 10'
         for _ in {1..30}; do # Wait up to 30 seconds
